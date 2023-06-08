@@ -1,0 +1,24 @@
+[
+    {
+        "discussionText": "I'm feeling so anxious today. I just want to run away from everything :(",
+        "discussionAuthor": "coolPerson",
+        "comments": [
+            {
+                "commentText": "I get that way too sometimes, I know how you feel. Remember to keep breathing, and take space if you need it.",
+                "commentAuthor": "neatPerson"
+            }
+        ],
+        "likes": 1
+    },
+    {
+        "discussionText": "When I'm stressed out I like to sit outside and listen to the birds. What are some tricks you guys use?",
+        "discussionAuthor": "neatPerson",
+        "comments": [
+            {
+                "commentText": "My favorite trick is listening to music, its amazing how much it can help!",
+                "commentAuthor": "coolPerson"
+            }
+        ],
+        "likes": 2
+    }
+]

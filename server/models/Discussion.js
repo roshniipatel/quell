@@ -1,3 +1,60 @@
+// Posted by a user and visible to other users
+// Other users can comment and like
+
+// TODO: format dates
+
+const { Schema, model } = require('mongoose');
+
+const discussionSchema = new Schema({
+    discussionText: {
+        type: String,
+        minlength: 1,
+        maxlength: 280,
+        required: true,
+        trim: true,
+    },
+    discussionAuthor: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    creationDate: {
+        type: Date,
+        default: Date.now,
+    },
+    comments: [
+        {
+            commentText: {
+                type: String,
+                minlength: 1,
+                maxlength: 280,
+                required: true,
+                trim: true,
+            },
+            commentAuthor: {
+                type: String,
+                required: true,
+                trim: true,
+            },
+            creationDate: {
+                type: Date,
+                default: Date.now,
+            },
+        },
+    ],
+    likes: {
+        type: Number,
+        default: 0,
+        required: true
+    },
+});
+
+const Discussion = model('Discussion', discussionSchema);
+
+module.exports = Discussion;
+
+// ------------ Reference ------------
+
 // const { Schema, model } = require('mongoose');
 // const dateFormat = require('../utils/dateFormat');
 
