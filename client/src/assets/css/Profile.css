@@ -1,0 +1,77 @@
+.profile-container {
+  background-color: #E1DEE9;
+  padding: 20px;
+  color: #D4BEBE;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+}
+
+.profile-avatar img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.profile-info {
+  margin-left: 20px;
+}
+
+.profile-info h2 {
+  color: #B6A6CA;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.profile-stats {
+  color: #A09ABC;
+  font-size: 16px;
+}
+
+.profile-actions button {
+  padding: 10px 20px;
+  background-color: #A09ABC;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profile-actions button:hover {
+  background-color: #B6A6CA;
+}
+
+.profile-bio p {
+  margin-top: 10px;
+}
+
+.profile-achievements {
+  margin-top: 20px;
+}
+
+.profile-achievements h3 {
+  color: #A09ABC;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.profile-achievements ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profile-achievements ul li {
+  margin-bottom: 5px;
+}
+
+.profile-achievements ul li a {
+  color: #B6A6CA;
+  text-decoration: none;
+}
+
+.profile-achievements ul li a:hover {
+  text-decoration: underline;
+}

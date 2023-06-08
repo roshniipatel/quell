@@ -1,0 +1,28 @@
+.home-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #A09ABC;
+  color: #B6A6CA;
+}
+
+.home-container h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.home-container p {
+  text-align: justify;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.home-container a {
+  color: #D5CFE1;
+  text-decoration: underline;
+}
+
+.home-container a:hover {
+  color: #D4BEBE;
+}
