@@ -32,21 +32,21 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
-    thoughts(username: String): [Thought]
-    thought(thoughtId: ID!): Thought
+    discussions(username: String): [Discussion]
+    discussion(discussionId: ID!): Discussion
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addThought(thoughtText: String!, thoughtAuthor: String!): Thought
+    addDiscussion(discussionText: String!, discussionAuthor: String!): Discussion
     addComment(
-      thoughtId: ID!
+      discussionId: ID!
       commentText: String!
       commentAuthor: String!
-    ): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
+    ): Discussion
+    removeDiscussion(discussionId: ID!): Discussion
+    removeComment(discussionId: ID!, commentId: ID!): Discussion
   }
 `;
 
