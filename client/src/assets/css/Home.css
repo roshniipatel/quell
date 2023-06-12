@@ -1,15 +1,17 @@
 .home-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+  width: 100%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 10px;
   background-color: #A09ABC;
-  color: #B6A6CA;
+  color: #f0edf3;
+  box-sizing: border-box;
 }
 
 .home-container h2 {
   text-align: center;
   font-size: 24px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .home-container p {

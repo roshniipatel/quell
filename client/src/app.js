@@ -5,11 +5,12 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
-// import Community from './pages/Community';
-// import Resources from './pages/Resources';
 import Header from './components/Header';
 import Footer from './components/Footer.js';
 import Login from './pages/Login';
+import Register from './pages/Register';
+import Podcasts from './pages/Podcasts';
+import Resources from './pages/Resources';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -27,8 +28,9 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
-              {/* <Route path="/community" element={<Community />} />
-            <Route path="/resources" element={<Resources />} /> */}
+              <Route path="/register" element={<Register />} />
+              <Route path="/podcasts" element={<Podcasts />} />
+              <Route path="/resources" element={<Resources />} />
             </Routes>
           </div>
           <Footer />
