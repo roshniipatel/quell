@@ -1,8 +1,9 @@
 // app.js renamed to App.js because react error said it could not find it
 import React from 'react';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 // Error was saying that Route was undefined so I installed this missing package
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { setContext } from '@apollo/client/link/context';
 
 import Home from './pages/Home';
 // import Community from './pages/Community';
@@ -10,11 +11,29 @@ import Home from './pages/Home';
 import Header from './components/Header';
 import Footer from './components/Footer.js';
 import Login from './pages/Login';
+import Register from './pages/Register';
+import Profile from './pages/Profile';
+
+
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
 
 const client = new ApolloClient({
-  uri: '/graphql',
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
+
+
 
 // !Component modified to work with react routing
 function App() {
@@ -25,8 +44,10 @@ function App() {
           <Header />
           <div className="container">
             <Routes>
-              <Route path="/" element={<Home />} />
+              {/* <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} /> */}
+              <Route path="/" element={<Profile/>}/>
               {/* <Route path="/community" element={<Community />} />
             <Route path="/resources" element={<Resources />} /> */}
             </Routes>
