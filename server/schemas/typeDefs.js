@@ -6,7 +6,9 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    discussion: [Discussion]!
+    discussions: [Discussion]!
+    accomplishments: [Accomplishment]!
+    gratitudes: [Gratitude]!
   }
 
   type Discussion {
@@ -24,6 +26,21 @@ const typeDefs = gql`
     createdAt: String
   }
 
+  type Resource {
+    _id: ID
+    resourceLink: String
+    resourceText: String
+    comments: [Comment]!
+  }
+
+  type Accomplishment {
+    accomplishment: String
+  }
+
+  type Gratitude {
+    gratitude: String
+  }
+
   type Auth {
     token: ID!
     user: User
@@ -34,7 +51,8 @@ const typeDefs = gql`
     user(username: String!): User
     discussions(username: String): [Discussion]
     discussion(discussionId: ID!): Discussion
-    
+    resources: [Resource]
+
     #Context functionality from resolvers.js
     userData: User
   }

@@ -6,8 +6,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
 
 import Home from './pages/Home';
-// import Community from './pages/Community';
-// import Resources from './pages/Resources';
 import Header from './components/Header';
 import Footer from './components/Footer.js';
 import Login from './pages/Login';
@@ -27,13 +25,13 @@ const authLink = setContext((_, { headers }) => {
     },
   };
 });
+import Podcasts from './pages/Podcasts';
+import Resources from './pages/Resources';
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
-
-
 
 // !Component modified to work with react routing
 function App() {
@@ -44,12 +42,11 @@ function App() {
           <Header />
           <div className="container">
             <Routes>
-              {/* <Route path="/" element={<Home />} />
+               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} /> */}
-              <Route path="/" element={<Profile/>}/>
-              {/* <Route path="/community" element={<Community />} />
-            <Route path="/resources" element={<Resources />} /> */}
+              <Route path="/register" element={<Register />} />
+              <Route path="/podcasts" element={<Podcasts />} />
+              <Route path="/resources" element={<Resources />} />
             </Routes>
           </div>
           <Footer />
