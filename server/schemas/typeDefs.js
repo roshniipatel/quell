@@ -34,6 +34,9 @@ const typeDefs = gql`
     user(username: String!): User
     discussions(username: String): [Discussion]
     discussion(discussionId: ID!): Discussion
+    
+    #Context functionality from resolvers.js
+    userData: User
   }
 
   type Mutation {

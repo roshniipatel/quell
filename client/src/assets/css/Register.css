@@ -21,6 +21,8 @@ label {
   color: #D5CFE1;
 }
 
+/* ADDED extra input for username to add styling */
+input[type="username"],
 input[type="email"],
 input[type="password"] {
   width: 100%;

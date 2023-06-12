@@ -1,62 +1,135 @@
+// !!!! THIS IS A TEST FOR LOGIN
 import React, { useState } from 'react';
-import '../assets/css/Login.css';
-
+import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
+import '../assets/css/Login.css';
 
-const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState('');
+export default function Login() {
+  const [formValue, setFormValue] = useState({ email: '', password: '' });
+  const [login, { error, data }] = useMutation(LOGIN_USER);
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    setEmailError('');
-  };
+  // This is going to update State as the form input is changing
+  const handleChange = (event) => {
+    const { name, value } = event.target;
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+    setFormValue({ ...formValue, [name]: value, });
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // logic to submit form input
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formValue);
+    try {
+      const { data } = await login({
+        variables: { ...formValue },
+      });
 
-    if (!validateEmail(email)) {
-      setEmailError('Please enter a valid email address.');
-      return;
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
     }
-
-    // login logic
-
-    setEmail('');
-    setPassword('');
-  };
-
-  const validateEmail = (email) => {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailPattern.test(email);
+    // clear form values
+    setFormValue({
+      email: '',
+      password: '',
+    });
   };
 
   return (
-    <div className="login">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" value={email} onChange={handleEmailChange} required />
-          {emailError && <div className="error-message">{emailError}</div>}
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" value={password} onChange={handlePasswordChange} required />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  );
-};
+      <div className="login">
+        <h2>Login</h2>
+        {data ? (<p>Success! Go back to{' '}<Link to='/'>Home</Link></p>) : (
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="email">Email:</label>
+              <input type="email" id="email" name="email" value={formValue.email} onChange={handleChange} required />
+              {/* {emailError && <div className="error-message">{emailError}</div>} */}
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Password:</label>
+              <input type="password" id="password" name="password" value={formValue.password} onChange={handleChange} required />
+            </div>
+            <button type="submit">Login</button>
+          </form>
+        )}
+        {error && (
+          <div className="error-message">
+            {error.message}
+          </div>
+        )}
+      </div>
+  )
+}
 
-export default Login;
+// !!!!!!!!
+
+// ! LAST VERSION OF CODE
+// import React, { useState } from 'react';
+// import '../assets/css/Login.css';
+
+// import { useMutation } from '@apollo/client';
+// import { LOGIN_USER } from '../utils/mutations';
+
+
+
+// const Login = () => {
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+//   const [emailError, setEmailError] = useState('');
+
+//   const handleEmailChange = (e) => {
+//     setEmail(e.target.value);
+//     setEmailError('');
+//   };
+
+//   const handlePasswordChange = (e) => {
+//     setPassword(e.target.value);
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     if (!validateEmail(email)) {
+//       setEmailError('Please enter a valid email address.');
+//       return;
+//     }
+
+//     // login logic
+
+//     setEmail('');
+//     setPassword('');
+//   };
+
+//   const validateEmail = (email) => {
+//     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//     return emailPattern.test(email);
+//   };
+
+//   return (
+//     <div className="login">
+//       <h2>Login</h2>
+//       <form onSubmit={handleSubmit}>
+//         <div className="form-group">
+//           <label htmlFor="email">Email:</label>
+//           <input type="email" id="email" value={email} onChange={handleEmailChange} required />
+//           {emailError && <div className="error-message">{emailError}</div>}
+//         </div>
+//         <div className="form-group">
+//           <label htmlFor="password">Password:</label>
+//           <input type="password" id="password" value={password} onChange={handlePasswordChange} required />
+//         </div>
+//         <button type="submit">Login</button>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default Login;
+// !!
+
+
 
 
 
