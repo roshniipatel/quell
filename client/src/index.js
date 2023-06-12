@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
+// !Error said BrowserRouter was running twice and we already had it in App.js
+// import { BrowserRouter } from 'react-router-dom';
+// !I still don't know about react-redux but some guy on Stack OverFlow was having issues 
+// import { Provider } from 'react-redux';
 
 import './index.css';
 import App from './App';
@@ -9,11 +11,12 @@ import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
+        {/* <Provider> */}
+    {/* <Provider store={store}> */}
+      {/* <BrowserRouter> */}
         <App />
-      </BrowserRouter>
-    </Provider>
+      {/* </BrowserRouter> */}
+    {/* </Provider> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

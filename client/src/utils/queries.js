@@ -9,3 +9,13 @@ export const QUERY_PROFILES = gql`
     }
   }
 `;
+
+// context query from from resolvers.js on server side
+export const USER_DATA = gql`
+  query userData {
+    userData {
+      _id
+      username
+    }
+  }
+`;

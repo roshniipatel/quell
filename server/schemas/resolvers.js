@@ -1,6 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Discussion, Resource } = require('../models');
-// const { signToken } = require('../utils/auth');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
@@ -17,6 +17,15 @@ const resolvers = {
     // thought: async (parent, { thoughtId }) => {
     //   return Thought.findOne({ _id: thoughtId });
     // },
+
+    // ! context query from activity 25 from MERN, adding context query, still testing
+    userData: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id });
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
   },
 
   Mutation: {
