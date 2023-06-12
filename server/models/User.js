@@ -19,25 +19,29 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  posts: [
+  discussions: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Post',
+      ref: 'Discussion',
     },
   ],
   accomplishments: [
     {
-      type: String,
-      minlength: 1,
-      maxlength: 100,
+      accomplishment: {
+        type: String,
+        minlength: 1,
+        maxlength: 100,
+      },
     },
   ],
   gratitudes: [
     {
-      type: String,
-      minlength: 1,
-      maxlength: 100,
-    }
+      gratitude: {
+        type: String,
+        minlength: 1,
+        maxlength: 100,
+      },
+    },
   ],
 });
 

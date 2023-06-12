@@ -5,10 +5,10 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate('thoughts');
+      return User.find().populate('discussions');
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('thoughts');
+      return User.findOne({ username }).populate('discussions');
     },
     // thoughts: async (parent, { username }) => {
     //   const params = username ? { username } : {};
@@ -25,6 +25,13 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    discussions: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Discussion.find(params).sort({ createdAt: -1 });
+    },
+    resources: async () => {
+      return Resource.find();
+    }
 
   },
 

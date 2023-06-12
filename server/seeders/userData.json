@@ -3,27 +3,41 @@
         "username": "coolPerson",
         "email": "cool@person.com",
         "password": "password123",
-        "posts": [],
+        "discussions": [],
         "accomplishments": [
-            "I cleaned the whole house!",
-            "I ate a full three meals a day for a whole week."
+            {
+                "accomplishment": "I cleaned the whole house!"
+            },
+            {
+                "accomplishment": "I ate a full three meals a day for a whole week."
+            }
         ],
         "gratitudes": [
-            "I'm glad I have a loving family",
-            "I'm grateful for my dog"
+            {
+                "gratitude": "I'm glad I have a loving family"
+            },
+            {
+                "gratitude": "I'm grateful for my dog"
+            }
         ]
     },
     {
         "username": "neatPerson",
         "email": "neat@person.com",
         "password": "password123",
-        "posts": [],
+        "discussions": [],
         "accomplishments": [
-            "I ran a marathon for the first time ever"
+            {
+                "accomplishment": "I ran a marathon for the first time ever"
+            }
         ],
         "gratitudes": [
-            "I have the best friends",
-            "I'm grateful for my pet cat"
+            {
+                "gratitude": "I have the best friends"
+            },
+            {
+                "gratitude": "I'm grateful for my pet cat"
+            }
         ]
     }
 ]
