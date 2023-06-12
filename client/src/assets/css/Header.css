@@ -1,0 +1,36 @@
+header {
+  background-color: #A09ABC;
+  color: #f0edf3;
+  padding: 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo h1 {
+  font-size: 40px;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style-type: none;
+  font-size: 20px;
+}
+
+.nav-links li {
+  margin-left: 15px;
+}
+
+.nav-links a {
+  color: #D5CFE1;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: #D4BEBE;
+}
