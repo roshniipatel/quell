@@ -22,14 +22,14 @@ connection.once('open', async () => {
     // Add posts to the user's posts array
     const users = await User.find();
     for (let i = 0; i < users.length; i++) {
-        console.log('Finding posts for user: ' + users[i].username);
+        console.log('Finding discussions for user: ' + users[i].username);
 
         // find posts by username
-        const posts = await Discussion.find({"discussionAuthor": users[i].username});
+        const discussions = await Discussion.find({"discussionAuthor": users[i].username});
         try {
             await User.findOneAndUpdate(
                 { "username": users[i].username},
-                { $set: { "posts": posts }}
+                { $set: { "discussions": discussions }}
             );
         } catch (err) {
             console.log(err);
