@@ -2,6 +2,7 @@
 // Other users can comment and like
 
 // TODO: format dates
+const dateToday=require('../utils/dateHelper');
 
 const { Schema, model } = require('mongoose');
 
@@ -21,6 +22,7 @@ const discussionSchema = new Schema({
     creationDate: {
         type: Date,
         default: Date.now,
+        get:(x)=>dateToday(x),
     },
     comments: [
         {
@@ -39,6 +41,7 @@ const discussionSchema = new Schema({
             creationDate: {
                 type: Date,
                 default: Date.now,
+                get:(x)=>dateToday(x),
             },
         },
     ],
