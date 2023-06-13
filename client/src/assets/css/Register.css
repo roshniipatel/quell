@@ -1,13 +1,14 @@
 .register {
   max-width: 400px;
   margin: 0 auto;
+  margin-top: 50px;
   padding: 20px;
   background-color: #A09ABC;
 }
 
 .register h2 {
   text-align: center;
-  color: #B6A6CA;
+  color: #ffffff;
   margin-bottom: 20px;
 }
 
@@ -21,7 +22,6 @@ label {
   color: #D5CFE1;
 }
 
-/* ADDED extra input for username to add styling */
 input[type="username"],
 input[type="email"],
 input[type="password"] {

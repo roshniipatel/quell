@@ -34,7 +34,7 @@ export default function RegisterForm() {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="username">Create Username:</label>
-            <input type="text" id="username" name="username" value={formValue.username} onChange={handleChange} required />
+            <input type="username" id="username" name="username" value={formValue.username} onChange={handleChange} required />
           </div>
           <div className="form-group">
             <label htmlFor="email">Email:</label>
