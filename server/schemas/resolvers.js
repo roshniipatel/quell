@@ -29,6 +29,9 @@ const resolvers = {
       const params = username ? { username } : {};
       return Discussion.find(params).sort({ createdAt: -1 });
     },
+    discussion:async(parent,{discussionId})=>{
+      return Discussion.findOne({_id:discussionId});
+    },
     resources: async () => {
       return Resource.find();
     }

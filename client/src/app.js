@@ -10,8 +10,10 @@ import Header from './components/Header';
 import Footer from './components/Footer.js';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Profile from './pages/Profile';
-
+// import Profile from './pages/Profile';
+import Podcasts from './pages/Podcasts';
+import Resources from './pages/Resources';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -25,8 +27,7 @@ const authLink = setContext((_, { headers }) => {
     },
   };
 });
-import Podcasts from './pages/Podcasts';
-import Resources from './pages/Resources';
+
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
@@ -42,7 +43,8 @@ function App() {
           <Header />
           <div className="container">
             <Routes>
-               <Route path="/" element={<Home />} />
+              {/* <Route path="/" element={<Profile />} /> */}
+              <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/podcasts" element={<Podcasts />} />
