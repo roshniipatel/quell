@@ -10,7 +10,7 @@ import Header from './components/Header';
 import Footer from './components/Footer.js';
 import Login from './pages/Login';
 import Register from './pages/Register';
-// import Profile from './pages/Profile';
+import Profile from './pages/Profile';
 import Podcasts from './pages/Podcasts';
 import Resources from './pages/Resources';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,6 +18,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
+
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
   return {
@@ -27,7 +28,6 @@ const authLink = setContext((_, { headers }) => {
     },
   };
 });
-
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),

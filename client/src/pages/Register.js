@@ -10,7 +10,6 @@ import '../assets/css/Register.css';
 export default function RegisterForm() {
   const [formValue, setFormValue] = useState({ username: '', email: '', password: '' });
   const [addUser, { error , data }] = useMutation(ADD_USER);
-  const [login, { error: loginError }] = useMutation(LOGIN_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -52,14 +51,12 @@ export default function RegisterForm() {
           {error.message}
         </div>
       )}
-      {loginError && (
-        <div className="error-message">
-          {loginError.message}
-        </div>
-      )}
     </div>
   );
 }
+
+
+
 
 
 // import React, { useState } from 'react';

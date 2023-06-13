@@ -54,7 +54,7 @@ query userData {
   }`
 // Query for discussions and single discussions
 export const QUERY_DISCUSSIONS=gql`
-query getDiscussions {
+query discussions {
   _id
   discussionText
   discussionAuthor
@@ -62,7 +62,7 @@ query getDiscussions {
 }`
 
 export const QUERY_SINGLE_DISCUSSION=gql`
-query getDiscussion($discussionId: ID!) {
+query discussion($discussionId: ID!) {
   discussion(discussionId: $discussionId) {
     _id
     discussionText
