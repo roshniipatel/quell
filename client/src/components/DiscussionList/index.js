@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function DiscussionList({ username, discussions }) {
+export default function DiscussionList({ discussions, username }) {
 
-    if (!discussions.length) {
+    if (!discussions) {
         return (
             <div className="toast" role="alert" aria-live="assertive" aria-atomic="true">
                 <div className="toast-body">
@@ -12,8 +12,10 @@ export default function DiscussionList({ username, discussions }) {
                     </div>
                 </div>
             </div>
-        );
+        )
     }
+
+
     return (
         <div className="col-8">
             <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-offset="0" data-bs-smooth-scroll="true" className="scrollspy-example" tabindex="0">
@@ -22,8 +24,8 @@ export default function DiscussionList({ username, discussions }) {
                         {username}
                     </div>
                   
-                    {discussions.map((discussion, index)=>(
-                    <div className="card" key={index}>
+                    {discussions.map((discussion)=>(
+                    <div className="card" key={discussion._id}>
                     <div className="card-body">
                         <blockquote className="blockquote mb-0">
                             <p>{discussion.discussionText}</p>
@@ -32,6 +34,8 @@ export default function DiscussionList({ username, discussions }) {
                     </div>
                 </div>
                     ))}
+
+
             </div>
         </div>
     )
