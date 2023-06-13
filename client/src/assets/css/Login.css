@@ -1,13 +1,14 @@
 .login {
   max-width: 400px;
   margin: 0 auto;
+  margin-top: 50px;
   padding: 20px;
-  background-color: #E1DEE9;
+  background-color: #A09ABC;
 }
 
 .login h2 {
   text-align: center;
-  color: #B6A6CA;
+  color: #ffffff;
   margin-bottom: 20px;
 }
 

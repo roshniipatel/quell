@@ -11,7 +11,8 @@ nav {
 }
 
 .logo h1 {
-  font-size: 40px;
+  font-size: 60px;
+  margin-left: 20px;
 }
 
 .nav-links {
@@ -24,6 +25,7 @@ nav {
 
 .nav-links li {
   margin-left: 15px;
+  font-size: 30px;
 }
 
 .nav-links a {
