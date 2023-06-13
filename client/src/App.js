@@ -43,10 +43,10 @@ function App() {
           <Header />
           <div className="container">
             <Routes>
-              {/* <Route path="/" element={<Profile />} /> */}
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="/podcasts" element={<Podcasts />} />
               <Route path="/resources" element={<Resources />} />
             </Routes>
