@@ -1,30 +1,71 @@
 .home-container {
-  width: 100%;
-  margin: auto;
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #A09ABC;
-  color: #f0edf3;
-  box-sizing: border-box;
-}
-
-.home-container h2 {
   text-align: center;
-  font-size: 24px;
-  margin-bottom: 10px;
+  height: 100vh;
+  overflow: auto;
 }
 
-.home-container p {
-  text-align: justify;
-  font-size: 16px;
-  line-height: 1.5;
+.hero-section {
+  background-image: url('../images/background-image.avif');
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  position: relative;
+  margin-top: 20px;
 }
 
-.home-container a {
-  color: #D5CFE1;
-  text-decoration: underline;
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #A09ABC;
+  text-align: center;
 }
 
-.home-container a:hover {
-  color: #D4BEBE;
+.hero-overlay h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-overlay p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  margin: 0 0.5rem;
+  padding: 0.75rem 2rem;
+  font-size: 1.2rem;
+  color: #ffffff;
+  background-color: #A09ABC;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #D4BEBE;
+  text-decoration: none;
+}
+
+.content-section {
+  margin: 0.5rem 0;
+  padding: 0 2rem;
+  color: #9189b3;
+}
+
+.content-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.content-section p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
