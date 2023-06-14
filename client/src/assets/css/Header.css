@@ -39,3 +39,7 @@ nav {
 .nav-links a:hover {
   color: #D4BEBE;
 }
+
+.logout-icon {
+  width:30px;
+}

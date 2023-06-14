@@ -54,7 +54,7 @@ function App() {
               <Route path="/resources" element={<Resources />} />
             </Routes>
           </div>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </Router>
     </ApolloProvider>

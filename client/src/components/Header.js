@@ -2,13 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../utils/auth';
 import '../assets/css/Header.css';
+import logoutIcon from '../assets/images/logout-icon.png';
 
 const Header = () => {
   const loggedIn = Auth.loggedIn();
 
-  // const handleLogout = () => {
-  //   Auth.logout();
-  // };
+  const handleLogout = () => {
+    Auth.logout();
+  };
 
   return (
     <header>
@@ -25,9 +26,6 @@ const Header = () => {
               <li>
                 <Link to="/profile">Profile</Link>
               </li>
-              {/* <li>
-                <button onClick={handleLogout}>Logout</button>
-              </li> */}
             </>
           ) : null}
           <li>
@@ -39,6 +37,13 @@ const Header = () => {
           <li>
             <Link to="/resources">Resources</Link>
           </li>
+          {loggedIn ? (
+            <>
+              <li>
+                <img src={logoutIcon} alt="Logout" onClick={handleLogout} className="logout-icon" />
+              </li>
+            </>
+          ) : null}
         </ul>
       </nav>
     </header>
@@ -46,3 +51,4 @@ const Header = () => {
 }
 
 export default Header;
+
