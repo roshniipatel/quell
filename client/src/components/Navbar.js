@@ -14,6 +14,9 @@ const NavBar = () => {
         <li>
           <Link to="/resources">Resources</Link>
         </li>
+        <li>
+          <Link to="/profile">Profile</Link>
+        </li>
         {/* we can add more navigation links as needed */}
       </ul>
     </nav>
