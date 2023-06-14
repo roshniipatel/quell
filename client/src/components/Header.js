@@ -1,8 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Auth from '../utils/auth';
 import '../assets/css/Header.css';
 
 const Header = () => {
+  const loggedIn = Auth.loggedIn();
+
+  // const handleLogout = () => {
+  //   Auth.logout();
+  // };
+
   return (
     <header>
       <nav>
@@ -13,9 +20,16 @@ const Header = () => {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/profile">Profile</Link>
-          </li>
+          {loggedIn ? (
+            <>
+              <li>
+                <Link to="/profile">Profile</Link>
+              </li>
+              {/* <li>
+                <button onClick={handleLogout}>Logout</button>
+              </li> */}
+            </>
+          ) : null}
           <li>
             <Link to="/discussions">Discussions</Link>
           </li>
@@ -25,7 +39,6 @@ const Header = () => {
           <li>
             <Link to="/resources">Resources</Link>
           </li>
-          {/* we can add more navigation links as needed */}
         </ul>
       </nav>
     </header>
