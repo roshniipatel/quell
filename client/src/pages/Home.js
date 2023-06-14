@@ -37,7 +37,6 @@ const Home = () => {
       <div className="content-section">
         <h2>Explore, Connect, and Thrive</h2>
         <p>Discover a supportive community where you can share your experiences, learn from others, and find helpful resources to support your mental well-being.</p>
-        {/* Add additional content sections as needed */}
       </div>
     </div>
   );
