@@ -21,11 +21,14 @@ nav {
   align-items: center;
   list-style-type: none;
   font-size: 20px;
+  text-align: right;
+  justify-content: space-evenly;
 }
 
 .nav-links li {
   margin-left: 15px;
-  font-size: 30px;
+  font-size: 28px;
+  /* font-family: monospace; */
 }
 
 .nav-links a {
