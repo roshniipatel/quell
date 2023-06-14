@@ -20,6 +20,8 @@ Ellen Kolbly: https://github.com/notalisk
 
 Roshni Patel: https://github.com/roshniipatel 
 
+Ulises Garfias: https://github.com/garfias06
+
 ## Ideas for improvement
 
 ## License 
