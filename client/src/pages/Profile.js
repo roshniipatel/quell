@@ -3,6 +3,8 @@ import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
 import Auth from '../utils/auth';
 import '../assets/css/Profile.css';
+import DiscussionForm from '../components/DiscussionForm';
+import blankProfileImage from '../assets/images/blank-profile-picture.png';
 
 const Profile = () => {
   const thisUser = Auth.getProfile();
@@ -18,7 +20,7 @@ const Profile = () => {
 
   const [aboutMe, setAboutMe] = useState('');
 
-  console.log("Data: " + JSON.stringify(user.discussions));
+  console.log("Data: " + user.discussions);
 
   // Check login status
   if (!Auth.loggedIn()) {
@@ -85,13 +87,27 @@ const Profile = () => {
     setAboutMe(user.aboutMe);
   };
 
+  function displayProfileImage() {
+    if (user.profileImage) {
+      return (
+      <div className="profile-image">
+          <img src={user.profileImage} alt="Profile" />
+      </div>
+      )
+    } else {
+      return (
+        <div className="profile-image">
+          <img src={blankProfileImage} alt="Profile Picture" />
+        </div>
+      )
+    }
+  }
+
   // Return content
   return (
     <div className="profile-container">
       <div className="profile-details">
-        <div className="profile-image">
-          <img src={user.profileImage} alt="Profile" />
-        </div>
+        {displayProfileImage()}
         <div className="profile-info">
           <h2 className="username">{user.username}</h2>
           <button className="add-friend-button">Add Friend</button>
@@ -120,6 +136,10 @@ const Profile = () => {
         <div>
           {discussionList()}
         </div>
+      </div>
+      <div>
+        <h3>Discuss:</h3>
+        <DiscussionForm />
       </div>
     </div>
   );
