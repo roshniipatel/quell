@@ -65,44 +65,13 @@ const resolvers = {
       const discussion=await Discussion.create({discussionText, discussionAuthor});
 
       await User.findOneAndUpdate({username: discussionAuthor},
-        {$addToSet:{discussions:discussion._id}});
+        {$addToSet:{discussions:discussion._id}}, {new:true});
 
         return discussion;
     }
 
 
-    // addThought: async (parent, { thoughtText, thoughtAuthor }) => {
-    //   const thought = await Thought.create({ thoughtText, thoughtAuthor });
-
-    //   await User.findOneAndUpdate(
-    //     { username: thoughtAuthor },
-    //     { $addToSet: { thoughts: thought._id } }
-    //   );
-
-    //   return thought;
-    // },
-    // addComment: async (parent, { thoughtId, commentText, commentAuthor }) => {
-    //   return Thought.findOneAndUpdate(
-    //     { _id: thoughtId },
-    //     {
-    //       $addToSet: { comments: { commentText, commentAuthor } },
-    //     },
-    //     {
-    //       new: true,
-    //       runValidators: true,
-    //     }
-    //   );
-    // },
-    // removeThought: async (parent, { thoughtId }) => {
-    //   return Thought.findOneAndDelete({ _id: thoughtId });
-    // },
-    // removeComment: async (parent, { thoughtId, commentId }) => {
-    //   return Thought.findOneAndUpdate(
-    //     { _id: thoughtId },
-    //     { $pull: { comments: { _id: commentId } } },
-    //     { new: true }
-    //   );
-    // },
+   
   },
 };
 

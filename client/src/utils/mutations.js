@@ -39,25 +39,9 @@ export const ADD_USER = gql`
 //   }
 // `;
 
-export const ADD_DISCUSSION = gql`
-  mutation addDiscussion($discussionText: String!, $discussionAuthor: String!) {
-    addDiscussion(discussionText: $discussionText, discussionAuthor: $discussionAuthor) {
-      _id
-      discussionText
-      discussionAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-      }
-    }
-  }
-`;
-
-
 // export const ADD_DISCUSSION = gql`
-//   mutation addDiscussion($discussionText: String!) {
-//     addDiscussion(discussionText: $discussionText) {
+//   mutation addDiscussion($discussionText: String!, $discussionAuthor: String!) {
+//     addDiscussion(discussionText: $discussionText, discussionAuthor: $discussionAuthor) {
 //       _id
 //       discussionText
 //       discussionAuthor
@@ -69,3 +53,18 @@ export const ADD_DISCUSSION = gql`
 //     }
 //   }
 // `;
+
+
+export const ADD_DISCUSSION = gql`
+mutation addDiscussion($discussionText: String!, $discussionAuthor: String!) {
+  addDiscussion(discussionText: $discussionText, discussionAuthor: $discussionAuthor) {
+    _id
+    discussionAuthor
+    discussionText
+    createdAt
+    comments {
+      _id
+    }
+  }
+}
+`;
