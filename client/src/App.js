@@ -1,7 +1,9 @@
-// app.js renamed to App.js because react error said it could not find it
 import React from 'react';
-import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
-// Error was saying that Route was undefined so I installed this missing package
+import { 
+  ApolloClient, 
+  InMemoryCache, 
+  ApolloProvider, 
+  createHttpLink } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
 
@@ -13,7 +15,6 @@ import Register from './pages/Register';
 import Profile from './pages/Profile';
 import Podcasts from './pages/Podcasts';
 import Resources from './pages/Resources';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -34,7 +35,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-// !Component modified to work with react routing
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -44,6 +44,7 @@ function App() {
           <div className="container">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/profile" element={<Profile />} />

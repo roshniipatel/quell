@@ -7,9 +7,9 @@ const resolvers = {
     users: async () => {
       return User.find().populate('discussions');
     },
-    user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('discussions');
-    },
+    // user: async (parent, { username }) => {
+    //   return User.findOne({ username }).populate('discussions');
+    // },
     // thoughts: async (parent, { username }) => {
     //   const params = username ? { username } : {};
     //   return Thought.find(params).sort({ createdAt: -1 });
@@ -19,9 +19,9 @@ const resolvers = {
     // },
 
     // ! context query from activity 25 from MERN, adding context query, still testing
-    userData: async (parent, args, context) => {
+    user: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id });
+        return User.findOne({ _id: context.user._id }).populate('discussions');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -61,6 +61,16 @@ const resolvers = {
 
       return { token, user };
     },
+    addDiscussion:async (parent, {discussionText, discussionAuthor})=>{
+      const discussion=await Discussion.create({discussionText, discussionAuthor});
+
+      await User.findOneAndUpdate({username: discussionAuthor},
+        {$addToSet:{discussions:discussion._id}});
+
+        return discussion;
+    }
+
+
     // addThought: async (parent, { thoughtText, thoughtAuthor }) => {
     //   const thought = await Thought.create({ thoughtText, thoughtAuthor });
 

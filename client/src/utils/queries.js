@@ -10,18 +10,8 @@ export const QUERY_PROFILES = gql`
   }
 `;
 
-// context query from from resolvers.js on server side
-// export const USER_DATA = gql`
-//   query userData {
-//     userData {
-//       _id
-//       username
-//     }
-//   }
-// `;
-
-// Query for single profile page 
-export const QUERY_USER=gql`
+// Queries for profile page 
+export const QUERY_USER = gql`
 query user($username: String!) {
   user(username: $username) {
     _id
@@ -38,8 +28,23 @@ query user($username: String!) {
   }
 }`
 
-export const USER_PROFILE=gql`
-query userData {
+// export const USER_PROFILE=gql`
+// query userData {
+//     _id
+//     username
+//     email
+//     discussions {
+//       discussionText
+//       discussionAuthor
+//       createdAt
+//     }
+//     accomplishments {
+//       accomplishment
+//     }
+//   }`
+export const USER_PROFILE = gql`
+query users {
+  users {
     _id
     username
     email
@@ -51,10 +56,10 @@ query userData {
     accomplishments {
       accomplishment
     }
-  }`
-  
+  }
+}`
 // Query for discussions and single discussions
-export const QUERY_DISCUSSIONS=gql`
+export const QUERY_DISCUSSIONS = gql`
 query discussions {
   _id
   discussionText
@@ -62,7 +67,7 @@ query discussions {
   createdAt
 }`
 
-export const QUERY_SINGLE_DISCUSSION=gql`
+export const QUERY_SINGLE_DISCUSSION = gql`
 query discussion($discussionId: ID!) {
   discussion(discussionId: $discussionId) {
     _id
