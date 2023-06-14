@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function DiscussionList({ users }) {
+export default function DiscussionList({ user }) {
 
-    console.log(users.username);
-    if (!users) {
+    // console.log(users.username);
+    if (!user) {
         return (
             <div>
                 <div className="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -23,14 +23,14 @@ return (
 
     <div>
     {
-        users.map((discussion, i) => (
+        user.map((discussion, i) => (
             <div className="card w-75" key={i}>
                 <div className='card-header'>{discussion.username}</div>
                 {discussion.discussions.map((item, j) => (
                     <div className="card-body" key={j}>
                         <h5 className="card-title">{item.discussionText}</h5>
                         <p className="card-text">By {item.discussionAuthor} at {item.createdAt}</p>
-                        <a href="#" className="btn btn-primary">Start Discussion</a>
+                        <a href="" className="btn btn-primary">Start Discussion</a>
                     </div>
                 ))}
             </div>
@@ -39,5 +39,3 @@ return (
     </div>
 ) 
 }
-
-
