@@ -51,3 +51,10 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #D5CFE1;
 }
+
+.button2 {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  color: white;
+}

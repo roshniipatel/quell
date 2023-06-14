@@ -7,7 +7,7 @@ const Header = () => {
     <header>
       <nav>
         <div className="logo">
-          <h1>✿Quell</h1>
+          <h1>✿ Quell</h1>
         </div>
         <ul className="nav-links">
           <li>

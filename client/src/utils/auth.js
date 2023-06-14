@@ -23,9 +23,9 @@ class AuthService {
     return localStorage.getItem('id_token');
   }
 
-  login(idToken) {
+  login(idToken, callback) {
     localStorage.setItem('id_token', idToken);
-    window.location.assign('/');
+    callback(); 
   }
 
   logout() {
@@ -34,4 +34,6 @@ class AuthService {
   }
 }
 
-export default new AuthService();
+const auth = new AuthService();
+export default auth;
+
