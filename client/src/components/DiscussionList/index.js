@@ -20,7 +20,6 @@ export default function DiscussionList({ user }) {
 
 
 return (
-
     <div>
     {
         user.map((discussion, i) => (
