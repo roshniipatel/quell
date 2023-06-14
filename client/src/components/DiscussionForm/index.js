@@ -12,7 +12,7 @@ export default function DiscussionForm() {
         event.preventDefault();
 
         try {
-            const { data } = await addDiscussion({ variables: { discussionText } });
+            const { data } = await addDiscussion({ variables: { discussionText, discussionAuthor: data.username } });
             setDiscussionText('');
         } catch (error) {
             console.error(error);

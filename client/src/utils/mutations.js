@@ -53,3 +53,19 @@ export const ADD_DISCUSSION = gql`
     }
   }
 `;
+
+
+// export const ADD_DISCUSSION = gql`
+//   mutation addDiscussion($discussionText: String!) {
+//     addDiscussion(discussionText: $discussionText) {
+//       _id
+//       discussionText
+//       discussionAuthor
+//       createdAt
+//       comments {
+//         _id
+//         commentText
+//       }
+//     }
+//   }
+// `;
