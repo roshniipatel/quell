@@ -1,23 +1,36 @@
 .profile-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.profile-details {
+  display: flex;
+  align-items: flex-start;
 }
 
 .profile-image img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  margin-bottom: 20px;
+  margin: 0;
 }
 
 .profile-info {
-  text-align: center;
+  text-align: left;
+  margin-left: 50px;
+}
+
+.username-addfriend-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .username {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 30px;
+  margin-right: 10px;
 }
 
 .add-friend-button {
@@ -27,7 +40,7 @@
   padding: 8px 16px;
   font-size: 16px;
   cursor: pointer;
-  margin-bottom: 10px;
+  margin-left: 300px;
 }
 
 .add-friend-button:hover {
@@ -37,11 +50,11 @@
 
 .about-me-text {
   font-size: 18px;
-  margin-bottom: 20px;
 }
 
 .about-me-form {
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .about-me-textarea {
@@ -73,6 +86,7 @@
   padding: 8px 16px;
   font-size: 16px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .edit-button:hover {
@@ -93,87 +107,9 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
+  margin-top: 40px;
 }
 
 .discussion-list-item {
   margin-bottom: 10px;
 }
-
-
-/* .profile-container {
-  background-color: #E1DEE9;
-  padding: 20px;
-  color: #D4BEBE;
-}
-
-.profile-header {
-  display: flex;
-  align-items: center;
-}
-
-.profile-avatar img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-}
-
-.profile-info {
-  margin-left: 20px;
-}
-
-.profile-info h2 {
-  color: #B6A6CA;
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.profile-stats {
-  color: #A09ABC;
-  font-size: 16px;
-}
-
-.profile-actions button {
-  padding: 10px 20px;
-  background-color: #A09ABC;
-  color: #FFFFFF;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.profile-actions button:hover {
-  background-color: #B6A6CA;
-}
-
-.profile-bio p {
-  margin-top: 10px;
-}
-
-.profile-achievements {
-  margin-top: 20px;
-}
-
-.profile-achievements h3 {
-  color: #A09ABC;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.profile-achievements ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.profile-achievements ul li {
-  margin-bottom: 5px;
-}
-
-.profile-achievements ul li a {
-  color: #B6A6CA;
-  text-decoration: none;
-}
-
-.profile-achievements ul li a:hover {
-  text-decoration: underline;
-} */
