@@ -42,7 +42,7 @@ const Profile = () => {
     if (!user.discussions) {
       return (
         user.discussions.map((discussion, i) => (
-          <div className="card w-75" key={i}>
+          <div className="card discussion-card" key={i}>
             <div className='card-header'>{discussion.username}</div>
             {discussion.discussions.map((item, j) => (
               <div className="card-body" key={j}>
@@ -53,15 +53,16 @@ const Profile = () => {
             ))}
           </div>
         ))
-      )
+      );
     } else {
       return (
         <div>
-          No Discussions yet!          
+          No Discussions yet!
         </div>
-    )
+      );
     }
   }
+
 
   if (loading) {
     return (
@@ -77,8 +78,7 @@ const Profile = () => {
 
   const handleAboutMeSubmit = (event) => {
     event.preventDefault();
-    // Update the about me information in the backend
-    console.log(aboutMe); // Replace this with your mutation or API call
+    console.log(aboutMe); 
     setIsEditing(false);
   };
 
@@ -109,19 +109,21 @@ const Profile = () => {
       <div className="profile-details">
         {displayProfileImage()}
         <div className="profile-info">
-          <h2 className="username">{user.username}</h2>
-          <button className="add-friend-button">Add Friend</button>
+          <div className="username-addfriend-container">
+            <h2 className="username">{user.username}</h2>
+            <button className="add-friend-button">Add Friend</button>
+          </div>
           {!isEditing ? (
             <div className="about-me-text">{aboutMe || user.aboutMe}</div>
           ) : (
             <form className="about-me-form" onSubmit={handleAboutMeSubmit}>
               <textarea
                 className="about-me-textarea"
-                placeholder="Write something about yourself..."
+                placeholder="Tell something about yourself..."
                 value={aboutMe}
                 onChange={handleAboutMeChange}
               ></textarea>
-              <button type="submit" className="about-me-button">
+              <button className="about-me-button" type="submit">
                 Save
               </button>
             </form>

@@ -40,7 +40,7 @@
   padding: 8px 16px;
   font-size: 16px;
   cursor: pointer;
-  margin-left: 300px;
+  margin-left: 100px;
 }
 
 .add-friend-button:hover {
@@ -112,4 +112,13 @@
 
 .discussion-list-item {
   margin-bottom: 10px;
+}
+
+.discussion-card {
+  background-color: #A09ABC;
+  color: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  font-size: 18px;
 }
