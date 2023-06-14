@@ -62,6 +62,23 @@ query user($username: String!) {
   }
 }`
 
+
+// query for discussions page
+export const DISCUSSIONS=gql`
+query users {
+  users {
+    _id
+    username
+    email
+    discussions {
+      _id
+      discussionText
+      discussionAuthor
+      createdAt
+    }
+  }
+}`
+
 // Query for discussions and single discussions
 export const QUERY_DISCUSSIONS = gql`
 query discussions {
