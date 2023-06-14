@@ -42,22 +42,26 @@ query user($username: String!) {
 //       accomplishment
 //     }
 //   }`
+
 export const USER_PROFILE = gql`
-query users {
-  users {
-    _id
-    username
+query user($username: String!) {
+  user(username: $username) {
+    accomplishments {
+      accomplishment
+    }
+    gratitudes {
+      gratitude
+    }
     email
+    username
     discussions {
       discussionText
       discussionAuthor
       createdAt
     }
-    accomplishments {
-      accomplishment
-    }
   }
 }`
+
 // Query for discussions and single discussions
 export const QUERY_DISCUSSIONS = gql`
 query discussions {
