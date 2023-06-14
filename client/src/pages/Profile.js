@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { QUERY_USER, USER_PROFILE } from '../utils/queries';
-import DiscussionList from '../components/DiscussionList';
+import { QUERY_USER } from '../utils/queries';
 import Auth from '../utils/auth';
 import '../assets/css/Profile.css';
 
@@ -19,7 +18,7 @@ const Profile = () => {
 
   const [aboutMe, setAboutMe] = useState('');
 
-  console.log("Data: " + JSON.stringify(user));
+  console.log("Data: " + JSON.stringify(user.discussions));
 
   // Check login status
   if (!Auth.loggedIn()) {
@@ -35,6 +34,31 @@ const Profile = () => {
         </div>
       </div>
     );
+  }
+
+  function discussionList() {
+    if (!user.discussions) {
+      return (
+        user.discussions.map((discussion, i) => (
+          <div className="card w-75" key={i}>
+            <div className='card-header'>{discussion.username}</div>
+            {discussion.discussions.map((item, j) => (
+              <div className="card-body" key={j}>
+                <h5 className="card-title">{item.discussionText}</h5>
+                <p className="card-text">By {item.discussionAuthor} at {item.createdAt}</p>
+                <a href="" className="btn btn-primary">Start Discussion</a>
+              </div>
+            ))}
+          </div>
+        ))
+      )
+    } else {
+      return (
+        <div>
+          No Discussions yet!          
+        </div>
+    )
+    }
   }
 
   if (loading) {
@@ -64,7 +88,6 @@ const Profile = () => {
   // Return content
   return (
     <div className="profile-container">
-      <p>Logged in</p>
       <div className="profile-details">
         <div className="profile-image">
           <img src={user.profileImage} alt="Profile" />
@@ -94,22 +117,9 @@ const Profile = () => {
       </div>
       <div className="discussion-list">
         <h3>My Discussions:</h3>
-        {/* <div>
-          {
-            user.discussion.map((discussion, i) => (
-              <div className="card w-75" key={i}>
-                <div className='card-header'>{discussion.username}</div>
-                {discussion.discussions.map((item, j) => (
-                  <div className="card-body" key={j}>
-                    <h5 className="card-title">{item.discussionText}</h5>
-                    <p className="card-text">By {item.discussionAuthor} at {item.createdAt}</p>
-                    <a href="" className="btn btn-primary">Start Discussion</a>
-                  </div>
-                ))}
-              </div>
-            ))
-          }
-        </div> */}
+        <div>
+          {discussionList()}
+        </div>
       </div>
     </div>
   );
