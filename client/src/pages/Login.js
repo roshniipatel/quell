@@ -25,9 +25,10 @@ const Login = () => {
       const { data } = await login({
         variables: { ...formValue },
       });
-
+      
       Auth.login(data.login.token, () => {
         navigate('/profile');
+        console.log('rude')
       });
     } catch (e) {
       console.error(e);

@@ -52,6 +52,7 @@ query userData {
       accomplishment
     }
   }`
+  
 // Query for discussions and single discussions
 export const QUERY_DISCUSSIONS=gql`
 query discussions {
