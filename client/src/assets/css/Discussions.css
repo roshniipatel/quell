@@ -1,8 +1,28 @@
-/* .profile-container {
-  background-color: #A09ABC;
-  color: #ffffff;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  font-size: 18px;
-} */
+.cardSize{
+  width: 70%;
+  display: flex;
+  flex-flow: column-reverse;
+}
+.discussion{
+    background-color: #A09ABC;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    color: white;
+    padding-left: 40px;
+}
+.disBtn[type="submit"] {
+    float:right;
+    width: 15%;
+    padding: 10px;
+    margin-right: 50px;
+    margin-bottom: 10px;
+    background-color: #A09ABC;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .disBtn[type="submit"]:hover {
+    background-color: #D5CFE1;
+  }

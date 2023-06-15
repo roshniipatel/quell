@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { QUERY_USER, DISCUSSIONS } from '../utils/queries';
+import { DISCUSSION_LIST } from '../utils/queries';
 import DiscussionList from '../components/DiscussionList';
 import Auth from '../utils/auth';
 import '../assets/css/Profile.css';
 import '../assets/css/Discussions.css';
 
-
 const Discussions = () => {
-  const { loading, data } = useQuery(DISCUSSIONS);
-  // const {loading, data}=useQuery(QUERY_USER);
+  const { loading, data } = useQuery(DISCUSSION_LIST);
 
   if (loading) {
     return (
@@ -19,11 +17,10 @@ const Discussions = () => {
     );
   }
 
-  // const user = data?.userProfile || {};
-  const user = data?.users || [];
-  // const user = data?.user || [];
+  const discussionList = data?.discussions || [];
+  const loggedIn=Auth.loggedIn()
 
-  if (!Auth.loggedIn()) {
+  if (!loggedIn) {
     return (
       <div className="toast" role="alert" aria-live="assertive" aria-atomic="true">
         <div className="toast-body">
@@ -42,7 +39,7 @@ const Discussions = () => {
     <div className="profile-container">
       <div className="discussion-list">
         <h3>Discussions:</h3>
-        <DiscussionList user={user} />
+        <DiscussionList discussionList={discussionList} />
       </div>
     </div>
   );
