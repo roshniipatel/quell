@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function DiscussionList({ discussionList }) {
+    const [supportCounts, setSupportCounts] = useState(() => {
+        const storedCounts = localStorage.getItem('supportCounts');
+        return storedCounts ? JSON.parse(storedCounts) : Array(discussionList.length).fill(0);
+    });
 
-    // console.log(users.username);
+    const handleShowSupport = (discussionIndex) => {
+        setSupportCounts((prevCounts) => {
+            const updatedCounts = [...prevCounts];
+            updatedCounts[discussionIndex] += 1;
+            localStorage.setItem('supportCounts', JSON.stringify(updatedCounts));
+            return updatedCounts;
+        });
+    };
+
+    useEffect(() => {
+        const storedCounts = localStorage.getItem('supportCounts');
+        if (storedCounts) {
+            setSupportCounts(JSON.parse(storedCounts));
+        }
+    }, []);
+
     if (!discussionList) {
         return (
             <div>
@@ -10,31 +29,39 @@ export default function DiscussionList({ discussionList }) {
                     <div className="toast-body">
                         No Discussions yet!
                         <div className="mt-2 pt-2 border-top">
-                            <button type="button" className="btn btn-primary btn-sm" to='/'>Go Back to Homepage</button>
+                            <button type="button" className="btn btn-primary btn-sm" to="/">
+                                Go Back to Homepage
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 
     return (
-
-        <div className='cardSize'>
+        <div className="cardSize">
             {discussionList.map((item, i) => (
                 <div className="card" key={i}>
                     <h5 className="discussion">{item.discussionAuthor}</h5>
                     <div className="card-body">
                         <h5 className="card-title">{item.discussionText}</h5>
                         <p className="card-text">{item.createdAt}</p>
-                        <button type="submit" className='disBtn'>Show support</button>
+                        <button
+                            type="submit"
+                            className="disBtn"
+                            onClick={() => handleShowSupport(i)}
+                        >
+                            Show support {supportCounts[i]}
+                        </button>
                     </div>
                 </div>
             ))}
         </div>
-
-    )
+    );
 }
+
+
 
 // !PREVIOUS CODE
 // import React from 'react';
