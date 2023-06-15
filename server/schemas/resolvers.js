@@ -68,10 +68,10 @@ const resolvers = {
         {$addToSet:{discussions:discussion._id}}, {new:true});
 
         return discussion;
+    },
+    updateLikes:async (parent, {id, likes}) => {
+      await Discussion.findByIdAndUpdate(id, { likes }, { new: true });
     }
-
-
-   
   },
 };
 

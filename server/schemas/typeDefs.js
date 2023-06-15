@@ -17,6 +17,7 @@ const typeDefs = gql`
     discussionAuthor: String
     createdAt: String
     comments: [Comment]!
+    likes: Int
   }
 
   type Comment {
@@ -68,6 +69,7 @@ const typeDefs = gql`
     ): Discussion
     removeDiscussion(discussionId: ID!): Discussion
     removeComment(discussionId: ID!, commentId: ID!): Discussion
+    updateLikes(id: ID!, likes: Int!): Discussion
   }
 `;
 
