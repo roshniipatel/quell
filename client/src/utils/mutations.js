@@ -24,6 +24,36 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_DISCUSSION = gql`
+mutation addDiscussion($discussionText: String!, $discussionAuthor: String!) {
+  addDiscussion(discussionText: $discussionText, discussionAuthor: $discussionAuthor) {
+    _id
+    discussionAuthor
+    discussionText
+    createdAt
+    comments {
+      _id
+    }
+  }
+}
+`;
+
+// It adds a comment to a discussion
+export const ADD_COMMENT=gql`
+mutation addComment($discussionId: ID!, $commentText: String!, $commentAuthor: String!) {
+  addComment(discussionId: $discussionId, commentText: $commentText, commentAuthor: $commentAuthor) {
+    _id
+    comments {
+      _id
+      commentAuthor
+      commentText
+      createdAt
+    }
+  }
+}
+`;
+
+
 // export const ADD_DISCUSSION = gql`
 //   mutation addThought($thoughtText: String!, $thoughtAuthor: String!) {
 //     addDiscussion(discussionText: $discussionText, discussionAuthor: $discussionAuthor) {
@@ -54,17 +84,3 @@ export const ADD_USER = gql`
 //   }
 // `;
 
-
-export const ADD_DISCUSSION = gql`
-mutation addDiscussion($discussionText: String!, $discussionAuthor: String!) {
-  addDiscussion(discussionText: $discussionText, discussionAuthor: $discussionAuthor) {
-    _id
-    discussionAuthor
-    discussionText
-    createdAt
-    comments {
-      _id
-    }
-  }
-}
-`;

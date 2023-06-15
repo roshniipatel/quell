@@ -1,4 +1,5 @@
 import React from 'react';
+import CommentForm from '../CommentForm/CommentForm';
 
 export default function DiscussionList({ discussionList }) {
 
@@ -27,14 +28,33 @@ export default function DiscussionList({ discussionList }) {
                     <div className="card-body">
                         <h5 className="card-title">{item.discussionText}</h5>
                         <p className="card-text">{item.createdAt}</p>
-                        <button type="submit" className='disBtn'>Show support</button>
+                        {/* <button type="submit" className='disBtn'>Show support</button> */}
+                        <CommentForm discussionId={item._id}/>
                     </div>
-                </div>
-            ))}
-        </div>
+                    
+                    {/*  */}
+                    <div className='card comments'>
+                        {/* might need another map inside this map to retrieve comments for each user */}
+                        {item.comments.map((comment, j) => (
+                            < div key = { j } className='card-body'>
+                            <p>{comment.commentText}</p>
+                            <p>by: {comment.commentAuthor}</p>
+                        </div>
 
+                    ))}
+                </div>
+                {/*  */}
+
+                </div>
+    ))
+}
+        </div >
     )
 }
+
+
+
+
 
 // !PREVIOUS CODE
 // import React from 'react';
@@ -77,6 +97,6 @@ export default function DiscussionList({ discussionList }) {
     // }
     // </div>
 
-// ) 
+// )
 // }
 
