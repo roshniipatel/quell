@@ -83,9 +83,11 @@ const resolvers = {
           }, { new: true })
       }
       throw new AuthenticationError('login!')
+  
+    },
+    updateLikes:async (parent, {id, likes}) => {
+      await Discussion.findByIdAndUpdate(id, { likes }, { new: true });
     }
-
-
   },
 };
 
