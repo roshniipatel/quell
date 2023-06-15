@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { USER_PROFILE } from '../utils/queries';
 import Auth from '../utils/auth';
@@ -6,7 +6,6 @@ import '../assets/css/Profile.css';
 import DiscussionForm from '../components/DiscussionForm';
 import UserDiscussionList from '../components/UserDiscussionList/UserDiscussionList';
 import blankProfileImage from '../assets/images/blank-profile-picture.png';
-import { useEffect } from 'react';
 
 const Profile = () => {
   const thisUser = Auth.getProfile();
@@ -26,7 +25,7 @@ const Profile = () => {
       setAboutMe(storedAboutMe);
     }
   }, []);
-  
+
   const [aboutMe, setAboutMe] = useState('');
 
   console.log("Data: " + user.discussions);
