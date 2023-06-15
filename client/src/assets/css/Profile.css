@@ -122,3 +122,7 @@
   border-radius: 10px;
   font-size: 18px;
 }
+.cardSize{
+  display: flex;
+  flex-flow: column-reverse;
+}
