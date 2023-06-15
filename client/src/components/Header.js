@@ -1,14 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Auth from '../utils/auth';
 import '../assets/css/Header.css';
 import logoutIcon from '../assets/images/logout-icon.png';
 
 const Header = () => {
   const loggedIn = Auth.loggedIn();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     Auth.logout();
+    // localStorage.removeItem('token');
+    navigate('/');
   };
 
   return (
