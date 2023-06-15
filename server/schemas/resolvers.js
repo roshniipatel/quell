@@ -29,8 +29,8 @@ const resolvers = {
       const params = username ? { username } : {};
       return Discussion.find(params).sort({ createdAt: -1 });
     },
-    discussion:async(parent,{discussionId})=>{
-      return Discussion.findOne({_id:discussionId});
+    discussion: async (parent, { discussionId }) => {
+      return Discussion.findOne({ _id: discussionId });
     },
     resources: async () => {
       return Resource.find();
@@ -61,13 +61,29 @@ const resolvers = {
 
       return { token, user };
     },
-    addDiscussion:async (parent, {discussionText, discussionAuthor})=>{
-      const discussion=await Discussion.create({discussionText, discussionAuthor});
+    addDiscussion: async (parent, { discussionText, discussionAuthor }) => {
+      const discussion = await Discussion.create({ discussionText, discussionAuthor });
 
-      await User.findOneAndUpdate({username: discussionAuthor},
-        {$addToSet:{discussions:discussion._id}}, {new:true});
+      await User.findOneAndUpdate({ username: discussionAuthor },
+        { $addToSet: { discussions: discussion._id } }, { new: true });
 
-        return discussion;
+      return discussion;
+    },
+    addComment:  (parent, { discussionId, commentText, commentAuthor }, context) => {
+      if (context.user) {
+        return Discussion.findOneAndUpdate(
+          { _id: discussionId },
+          {
+            $addToSet: {
+              comments: {
+                commentText,
+                commentAuthor: context.user.username
+              }
+            }
+          }, { new: true })
+      }
+      throw new AuthenticationError('login!')
+  
     },
     updateLikes:async (parent, {id, likes}) => {
       await Discussion.findByIdAndUpdate(id, { likes }, { new: true });

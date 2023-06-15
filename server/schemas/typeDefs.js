@@ -62,11 +62,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addDiscussion(discussionText: String!, discussionAuthor: String!): Discussion
-    addComment(
-      discussionId: ID!
-      commentText: String!
-      commentAuthor: String!
-    ): Discussion
+    addComment(discussionId: ID!, commentText: String!, commentAuthor: String!): Discussion
     removeDiscussion(discussionId: ID!): Discussion
     removeComment(discussionId: ID!, commentId: ID!): Discussion
     updateLikes(id: ID!, likes: Int!): Discussion

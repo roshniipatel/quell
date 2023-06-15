@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import CommentForm from '../CommentForm/CommentForm';
 import { UPDATE_LIKES } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 
@@ -20,7 +21,7 @@ export default function DiscussionList({ discussionList }) {
                 const discussionId = discussionList[discussionIndex]._id;
                 const newLikes = updatedCounts[discussionIndex];
                 try {
-                    return await updateLikes({ variables: {updateLikesId: discussionId, likes: newLikes}});
+                    return await updateLikes({ variables: { updateLikesId: discussionId, likes: newLikes } });
                 } catch (err) {
                     console.log(JSON.stringify(err));
                 }
@@ -64,19 +65,43 @@ export default function DiscussionList({ discussionList }) {
                     <div className="card-body">
                         <h5 className="card-title">{item.discussionText}</h5>
                         <p className="card-text">{item.createdAt}</p>
-                        <button
-                            type="submit"
-                            className="disBtn"
-                            onClick={() => handleShowSupport(i)}
-                        >
-                            Show support {supportCounts[i]}
-                        </button>
+                        {/* <button type="submit" className='disBtn'>Show support</button> */}
+                        <CommentForm discussionId={item._id} />
                     </div>
+
+
+                    <button
+                        type="submit"
+                        className="disBtn"
+                        onClick={() => handleShowSupport(i)}
+                    >
+                        Show support {supportCounts[i]}
+                    </button>
+
+                    {/*  */}
+                    <div className='card comments'>
+                        {/* might need another map inside this map to retrieve comments for each user */}
+                        {item.comments.map((comment, j) => (
+                            < div key={j} className='card-body'>
+                                <p>{comment.commentText}</p>
+                                <p>by: {comment.commentAuthor}</p>
+                            </div>
+
+                        ))}
+                    </div>
+                    {/*  */}
+
                 </div>
-            ))}
-        </div>
-    );
+            ))
+            }
+        </div >
+    )
 }
+
+
+
+
+
 
 // export default function DiscussionList({ discussionList }) {
 //     const [updateLikes] = useMutation(UPDATE_LIKES);
@@ -147,6 +172,6 @@ export default function DiscussionList({ discussionList }) {
     // }
     // </div>
 
-// ) 
+// )
 // }
 

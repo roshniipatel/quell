@@ -24,6 +24,35 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_DISCUSSION = gql`
+mutation addDiscussion($discussionText: String!, $discussionAuthor: String!) {
+  addDiscussion(discussionText: $discussionText, discussionAuthor: $discussionAuthor) {
+    _id
+    discussionAuthor
+    discussionText
+    createdAt
+    comments {
+      _id
+    }
+  }
+}
+`;
+
+// It adds a comment to a discussion
+export const ADD_COMMENT=gql`
+mutation addComment($discussionId: ID!, $commentText: String!, $commentAuthor: String!) {
+  addComment(discussionId: $discussionId, commentText: $commentText, commentAuthor: $commentAuthor) {
+    _id
+    comments {
+      _id
+      commentAuthor
+      commentText
+      createdAt
+    }
+  }
+}
+`;
+
 export const UPDATE_LIKES = gql`
   mutation updateLikes($updateLikesId: ID!, $likes: Int!) {
     updateLikes(id: $updateLikesId, likes: $likes) {
@@ -63,17 +92,3 @@ export const UPDATE_LIKES = gql`
 //   }
 // `;
 
-
-export const ADD_DISCUSSION = gql`
-mutation addDiscussion($discussionText: String!, $discussionAuthor: String!) {
-  addDiscussion(discussionText: $discussionText, discussionAuthor: $discussionAuthor) {
-    _id
-    discussionAuthor
-    discussionText
-    createdAt
-    comments {
-      _id
-    }
-  }
-}
-`;
