@@ -24,6 +24,15 @@ export const ADD_USER = gql`
   }
 `;
 
+export const UPDATE_LIKES = gql`
+  mutation updateLikes($updateLikesId: ID!, $likes: Int!) {
+    updateLikes(id: $updateLikesId, likes: $likes) {
+      _id
+      likes
+    }
+  }
+`
+
 // export const ADD_DISCUSSION = gql`
 //   mutation addThought($thoughtText: String!, $thoughtAuthor: String!) {
 //     addDiscussion(discussionText: $discussionText, discussionAuthor: $discussionAuthor) {

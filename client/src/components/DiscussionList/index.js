@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { UPDATE_LIKES } from '../../utils/mutations';
+import { useMutation } from '@apollo/client';
 
 export default function DiscussionList({ discussionList }) {
+    const [updateLikes] = useMutation(UPDATE_LIKES);
     const [supportCounts, setSupportCounts] = useState(() => {
         const storedCounts = localStorage.getItem('supportCounts');
         return storedCounts ? JSON.parse(storedCounts) : Array(discussionList.length).fill(0);
@@ -11,6 +14,20 @@ export default function DiscussionList({ discussionList }) {
             const updatedCounts = [...prevCounts];
             updatedCounts[discussionIndex] += 1;
             localStorage.setItem('supportCounts', JSON.stringify(updatedCounts));
+
+            // add to db
+            const sendToDb = async () => {
+                const discussionId = discussionList[discussionIndex]._id;
+                const newLikes = updatedCounts[discussionIndex];
+                try {
+                    return await updateLikes({ variables: {updateLikesId: discussionId, likes: newLikes}});
+                } catch (err) {
+                    console.log(JSON.stringify(err));
+                }
+            }
+
+            sendToDb();
+
             return updatedCounts;
         });
     };
@@ -61,7 +78,33 @@ export default function DiscussionList({ discussionList }) {
     );
 }
 
+// export default function DiscussionList({ discussionList }) {
+//     const [updateLikes] = useMutation(UPDATE_LIKES);
 
+//     const [supportCounts, setSupportCounts] = useState(() => {
+//         const storedCounts = localStorage.getItem('supportCounts');
+//         return storedCounts ? JSON.parse(storedCounts) : Array(discussionList.length).fill(0);
+//     });
+
+//     const handleShowSupport = (discussionIndex) => {
+//         setSupportCounts((prevCounts) => {
+//             const updatedCounts = [...prevCounts];
+//             updatedCounts[discussionIndex] += 1;
+//             localStorage.setItem('supportCounts', JSON.stringify(updatedCounts));
+
+//             var id = discussionList[discussionIndex]._id;
+//             var updatedLikes = updatedCounts[discussionIndex];
+
+//             console.log('test');
+//             // Insert into database
+//             // try {
+//             //     const data = await updateLikes({ variables: {id, updatedLikes}});
+//             //     console.log(data);
+//             // } catch (error) {
+//             //     console.error(error);
+//             // }
+
+//             return updatedCounts;
 
 // !PREVIOUS CODE
 // import React from 'react';

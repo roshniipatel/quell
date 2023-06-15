@@ -10,7 +10,6 @@ import blankProfileImage from '../assets/images/blank-profile-picture.png';
 const Profile = () => {
   const thisUser = Auth.getProfile();
   const thisUsername = thisUser.data.username;
-  console.log(thisUsername)
 
   const [isEditing, setIsEditing] = useState(false);
 
@@ -27,8 +26,6 @@ const Profile = () => {
   }, []);
 
   const [aboutMe, setAboutMe] = useState('');
-
-  console.log("Data: " + user.discussions);
 
   // Check login status
   if (!Auth.loggedIn()) {
@@ -96,7 +93,7 @@ const Profile = () => {
     } else {
       return (
         <div className="profile-image">
-          <img src={blankProfileImage} alt="Profile Picture" />
+          <img src={blankProfileImage} alt="Profile avatar" />
         </div>
       )
     }
