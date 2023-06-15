@@ -6,6 +6,7 @@ import '../assets/css/Profile.css';
 import DiscussionForm from '../components/DiscussionForm';
 import UserDiscussionList from '../components/UserDiscussionList/UserDiscussionList';
 import blankProfileImage from '../assets/images/blank-profile-picture.png';
+import { useEffect } from 'react';
 
 const Profile = () => {
   const thisUser = Auth.getProfile();
@@ -19,6 +20,13 @@ const Profile = () => {
   });
   const user = data?.user || {};
 
+  useEffect(() => {
+    const storedAboutMe = localStorage.getItem('aboutMe');
+    if (storedAboutMe) {
+      setAboutMe(storedAboutMe);
+    }
+  }, []);
+  
   const [aboutMe, setAboutMe] = useState('');
 
   console.log("Data: " + user.discussions);
@@ -64,7 +72,9 @@ const Profile = () => {
 
   const handleAboutMeChange = (event) => {
     setAboutMe(event.target.value);
+    localStorage.setItem('aboutMe', event.target.value);
   };
+
 
   const handleAboutMeSubmit = (event) => {
     event.preventDefault();
