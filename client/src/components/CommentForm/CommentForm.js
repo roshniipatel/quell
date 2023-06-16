@@ -8,7 +8,6 @@ import { useMutation } from '@apollo/client';
 export default function CommentForm(discussionId) {
     // Modal
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     // 
@@ -16,25 +15,24 @@ export default function CommentForm(discussionId) {
     // Comment
     const [commentText, setCommentText] = useState('');
     const [addComment, { error }] = useMutation(ADD_COMMENT);
-    console.log(discussionId.discussionId)
     const loggedIn = Auth.loggedIn();
     const author = Auth.getProfile().data.username;
     const disId=discussionId.discussionId;
+    const refresh = () => { window.location.reload(true) }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
             const { data } = await addComment({ variables: { discussionId:disId, commentText, commentAuthor: author } })
-            console.log('comments: ' + data)
+            // console.log('comments: ' + data)
             setCommentText('');
         } catch (error) {
             console.error(error)
-            console.log(JSON.stringify(error))
+            // console.log(JSON.stringify(error))
         }
         const refresh = () => { window.location.reload(true) }
         refresh();
     }
-    const refresh = () => { window.location.reload(true) }
     
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -89,4 +87,3 @@ export default function CommentForm(discussionId) {
         </div>
     );
 }
-

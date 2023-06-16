@@ -3,14 +3,11 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 
 export default function UserCommentList({ comments }) {
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    console.log(comments)
     return (
         <div>
-            {/* <Button onClick={handleShow} className="me-2 commentBtn">See Comments</Button> */}
             <button type="submit" className='disBtn' onClick={handleShow}>See Comments</button>
             <Offcanvas show={show} onHide={handleClose} placement='end'>
                 <Offcanvas.Header closeButton>
@@ -27,7 +24,6 @@ export default function UserCommentList({ comments }) {
                             </div>
                         ))}
                     </div>
-
                 </Offcanvas.Body>
             </Offcanvas>
         </div>
