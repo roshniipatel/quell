@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_DISCUSSION } from '../../utils/mutations';
-
 import Auth from '../../utils/auth';
 
 export default function DiscussionForm() {
@@ -35,7 +34,7 @@ export default function DiscussionForm() {
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Write something...</label>
-                    <input type="discussion" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="discussionText" onChange={handleChange} />
+                    <textarea type="discussion" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="discussionText" onChange={handleChange} />
                     <div id="emailHelp" className="form-text">Start a discussion!</div>
                 </div>
                 <button type="submit" className="btn btn-primary" onClick={refresh}>Discuss</button>

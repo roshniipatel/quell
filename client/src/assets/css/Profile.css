@@ -122,8 +122,14 @@
   border-radius: 10px;
   font-size: 18px;
 }
-.cardSize{
+
+.cardSizeProfile {
+  display: flex;
+  flex-flow: column-reverse;
+  width: 40rem;
+}
+
+.commentOrder {
   display: flex;
   flex-flow: column-reverse;
 }
-

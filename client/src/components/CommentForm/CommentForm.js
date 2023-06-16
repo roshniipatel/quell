@@ -19,8 +19,8 @@ export default function CommentForm(discussionId) {
     console.log(discussionId.discussionId)
     const loggedIn = Auth.loggedIn();
     const author = Auth.getProfile().data.username;
+    const disId=discussionId.discussionId;
 
-    const disId=discussionId.discussionId
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
@@ -32,9 +32,10 @@ export default function CommentForm(discussionId) {
             console.log(JSON.stringify(error))
         }
         const refresh = () => { window.location.reload(true) }
-        refresh()
+        refresh();
     }
     const refresh = () => { window.location.reload(true) }
+    
     const handleChange = (event) => {
         const { name, value } = event.target;
         if (name === 'commentText') { setCommentText(value) }

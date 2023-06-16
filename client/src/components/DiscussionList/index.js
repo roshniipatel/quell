@@ -67,30 +67,31 @@ export default function DiscussionList({ discussionList }) {
                         <p className="card-text">{item.createdAt}</p>
                         {/* <button type="submit" className='disBtn'>Show support</button> */}
                         <CommentForm discussionId={item._id} />
+
+                        <button
+                            type="submit"
+                            className='disBtn'
+                            onClick={() => handleShowSupport(i)}
+                        >
+                            Show support {supportCounts[i]}
+                        </button>
+
                     </div>
 
 
-                    <button
-                        type="submit"
-                        className="disBtn"
-                        onClick={() => handleShowSupport(i)}
-                    >
-                        Show support {supportCounts[i]}
-                    </button>
-
-                    {/*  */}
                     <div className='card comments'>
-                        {/* might need another map inside this map to retrieve comments for each user */}
-                        {item.comments.map((comment, j) => (
-                            < div key={j} className='card-body'>
-                                <p>{comment.commentText}</p>
-                                <p>by: {comment.commentAuthor}</p>
-                            </div>
+                        {/* I might need another map inside this map to retrieve comments for each user */}
 
+                        {item.comments.map((comment, j) => (
+                            < div key={j} className='card eachComment'>
+                                <div className='card-body'>
+                                    <p>{comment.commentText}</p>
+                                    <p>by: {comment.commentAuthor}</p>
+                                </div>
+
+                            </div>
                         ))}
                     </div>
-                    {/*  */}
-
                 </div>
             ))
             }
