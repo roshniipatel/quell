@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { DISCUSSION_LIST } from '../utils/queries';
 import DiscussionList from '../components/DiscussionList';
+import Card from 'react-bootstrap/Card';
 import Auth from '../utils/auth';
 import '../assets/css/Profile.css';
 import '../assets/css/Discussions.css';
@@ -17,21 +18,25 @@ const Discussions = () => {
     );
   }
 
+
   const discussionList = data?.discussions || [];
-  const loggedIn=Auth.loggedIn()
+  const loggedIn = Auth.loggedIn();
+  console.log('logged in? ' + loggedIn)
 
   if (!loggedIn) {
     return (
-      <div className="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div className="toast-body">
-          You are not logged in!
-          <div className="mt-2 pt-2 border-top">
-            <button type="button" className="btn btn-primary btn-sm" to="/login">
-              Login
-            </button>
-          </div>
-        </div>
-      </div>
+      <Card style={{ width: '33rem' }} className='position-absolute top-50 start-50 translate-middle notLoggedIn'>
+        <Card.Body>
+          <Card.Title className='title'>We are sorry!!</Card.Title>
+          <Card.Text >
+            Perhaps you forgot to sign in or if you're new in the community try registering!
+          </Card.Text>
+          <Card.Text className='title'>
+            <Card.Link href="/login">Sign In</Card.Link>
+            <Card.Link href="/register">Sign Up</Card.Link>
+          </Card.Text>
+        </Card.Body>
+      </Card>
     );
   }
 

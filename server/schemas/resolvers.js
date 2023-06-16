@@ -7,18 +7,6 @@ const resolvers = {
     users: async () => {
       return User.find().populate('discussions');
     },
-    // user: async (parent, { username }) => {
-    //   return User.findOne({ username }).populate('discussions');
-    // },
-    // thoughts: async (parent, { username }) => {
-    //   const params = username ? { username } : {};
-    //   return Thought.find(params).sort({ createdAt: -1 });
-    // },
-    // thought: async (parent, { thoughtId }) => {
-    //   return Thought.findOne({ _id: thoughtId });
-    // },
-
-    // ! context query from activity 25 from MERN, adding context query, still testing
     user: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate('discussions');
@@ -35,7 +23,6 @@ const resolvers = {
     resources: async () => {
       return Resource.find();
     }
-
   },
 
   Mutation: {
