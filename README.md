@@ -21,14 +21,19 @@ Simply click on the deployed heroku link and it should take you to our live appl
 Once you're on our live application, create a profile and start discussions or respond to other users' discussions.
 
 ## Wireframe
+![alt text](./client/src/assets/images/wireframe.png)
 
 ## Credits
-
+- Stack Overflow https://stackoverflow.com/questions/62502855/replace-browserrouter-with-hashrouter (helped with heroku deployment errors)
+- w3schools https://www.w3schools.com/
+- MDN Webdocs https://developer.mozilla.org/en-US/
+- FreeCodeCamp https://www.freecodecamp.org/
+- 
 
 ## Links
 Github Repository: https://github.com/roshniipatel/quell 
 
-Heroku Deployment: 
+Heroku Deployment: https://quell-mental-health-9f784a2642a5.herokuapp.com/ 
 
 ## Contributors
 Ellen Kolbly: https://github.com/notalisk 
@@ -38,6 +43,10 @@ Roshni Patel: https://github.com/roshniipatel
 Ulises Garfias: https://github.com/garfias06
 
 ## Ideas for improvement
+- Add friends/followers
+- Search and find other people's profiles
+- Add desired profile picture
+- Add a mood tracker or a journal 
 
 ## License 
 MIT License
