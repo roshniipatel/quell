@@ -28,7 +28,6 @@ Once you're on our live application, create a profile and start discussions or r
 - w3schools https://www.w3schools.com/
 - MDN Webdocs https://developer.mozilla.org/en-US/
 - FreeCodeCamp https://www.freecodecamp.org/
-- 
 
 ## Links
 Github Repository: https://github.com/roshniipatel/quell 
