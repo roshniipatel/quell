@@ -60,35 +60,18 @@ export const UPDATE_LIKES = gql`
       likes
     }
   }
-`
-
-// export const ADD_DISCUSSION = gql`
-//   mutation addThought($thoughtText: String!, $thoughtAuthor: String!) {
-//     addDiscussion(discussionText: $discussionText, discussionAuthor: $discussionAuthor) {
-//       _id
-//       discussionText
-//       discussionAuthor
-//       createdAt
-//       comments {
-//         _id
-//         commentText
-//       }
-//     }
-//   }
-// `;
-
-// export const ADD_DISCUSSION = gql`
-//   mutation addDiscussion($discussionText: String!, $discussionAuthor: String!) {
-//     addDiscussion(discussionText: $discussionText, discussionAuthor: $discussionAuthor) {
-//       _id
-//       discussionText
-//       discussionAuthor
-//       createdAt
-//       comments {
-//         _id
-//         commentText
-//       }
-//     }
-//   }
-// `;
-
+`;
+export const REMOVE_DISCUSSION=gql`
+mutation removeDiscussion($discussionId: ID!) {
+  removeDiscussion(discussionId: $discussionId) {
+    _id
+    discussionText
+    discussionAuthor
+    comments {
+      _id
+      commentText
+      commentAuthor
+    }
+  }
+}
+`;

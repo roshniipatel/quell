@@ -5,7 +5,7 @@ import Auth from '../../utils/auth';
 
 export default function DiscussionForm() {
     const [discussionText, setDiscussionText] = useState('');
-    // const [discussionText, setDiscussionText] = useState({discussionText:'', discussionAuthor:''});
+    const refresh = () => window.location.reload(true)
     const [addDiscussion, { error }] = useMutation(ADD_DISCUSSION);
 
     const handleSubmit = async (event) => {
@@ -26,9 +26,8 @@ export default function DiscussionForm() {
         if (name === 'discussionText') {
             setDiscussionText(value);
         }
-
     }
-    const refresh = () => window.location.reload(true)
+   
     return (
         <div className="container">
             <form onSubmit={handleSubmit}>

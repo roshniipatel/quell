@@ -9,6 +9,8 @@ import '../assets/css/Discussions.css';
 
 const Discussions = () => {
   const { loading, data } = useQuery(DISCUSSION_LIST);
+  const discussionList = data?.discussions || [];
+  const loggedIn = Auth.loggedIn();
 
   if (loading) {
     return (
@@ -17,11 +19,6 @@ const Discussions = () => {
       </div>
     );
   }
-
-
-  const discussionList = data?.discussions || [];
-  const loggedIn = Auth.loggedIn();
-  console.log('logged in? ' + loggedIn)
 
   if (!loggedIn) {
     return (
