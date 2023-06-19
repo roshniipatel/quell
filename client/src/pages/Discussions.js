@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { DISCUSSION_LIST } from '../utils/queries';
 import DiscussionList from '../components/DiscussionList';
@@ -28,9 +29,11 @@ const Discussions = () => {
           <Card.Text >
             Perhaps you forgot to sign in or if you're new in the community try registering!
           </Card.Text>
-          <Card.Text className='title'>
-            <Card.Link href="/login">Sign In</Card.Link>
-            <Card.Link href="/register">Sign Up</Card.Link>
+          <Card.Text className='links'>
+            {/* <Card.Link href="/login">Sign In</Card.Link>
+            <Card.Link href="/register">Sign Up</Card.Link> */}
+            <Link to="/login">Sign In </Link>
+            <Link to="/register">Sign Up</Link>
           </Card.Text>
         </Card.Body>
       </Card>

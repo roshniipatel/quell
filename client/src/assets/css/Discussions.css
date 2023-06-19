@@ -34,18 +34,29 @@
   display: flex;
   flex-flow: column-reverse;
   margin-left: 15px;
-  border:none;
+  border: none;
 }
+
 .eachComment {
   margin-left: 15px;
   background-color: #D5CFE1;
-  border:none;
+  border: none;
 }
-.notLoggedIn{
+
+.notLoggedIn {
   background-color: #D5CFE1;
-  border:none;
+  border: none;
 }
-.title{
+
+.title {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.links {
+  display: flex;
+  justify-content: space-evenly;
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
