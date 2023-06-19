@@ -2,6 +2,8 @@ import React from 'react';
 import UserCommentList from '../UserCommentList/UserCommentList';
 import { REMOVE_DISCUSSION } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
+import '../../assets/css/UserDiscussionList.css';
+
 
 export default function UserDiscussionList({ discussions }) {
 
